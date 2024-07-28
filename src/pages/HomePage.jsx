@@ -10,7 +10,7 @@ import { setCategories, setProducts } from "../redux/slices/itemsSlice ";
 function HomePage() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.items.products);
-  const categories = useSelector((state) => state.items.categories);
+  // const categories = useSelector((state) => state.items.categories);
   const [filteredProducts, setFilteredProducts] = useState(products);
 
   useEffect(() => {

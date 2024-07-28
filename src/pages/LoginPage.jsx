@@ -11,12 +11,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const users = localStorage.getItem("user")
-    
-
-
-
-
     try {
       const response = await axios.post("/api/auth/login", { email, password });
       dispatch(login(response.data));
@@ -52,7 +46,9 @@ const LoginPage = () => {
         </button>
         <Link to="/signup">
           {" "}
-          <small className="color-blue">don't have account ? create account</small>
+          <small className="color-blue">
+            don't have account ? create account
+          </small>
         </Link>
       </div>
     </div>

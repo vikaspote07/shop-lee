@@ -10,7 +10,7 @@ function ProductPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const updateCart = (id) => {};
+
 
   const product = useSelector((state) =>
     state.items.products.find((p) => String(p.id) === String(id))
