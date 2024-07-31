@@ -13,7 +13,7 @@ const SignupPage = lazy(() => import("../pages/SignupPage"));
 const CheckoutPage = lazy(() => import("../pages/CheckoutPage"));
 const LoginPage = lazy(() => import("../pages/LoginPage"));
 const UserProfile = lazy(() => import("../components/UserProfile"));
-const PaymentPage = lazy(() => import("../pages/PaymentPage"));
+const PaymentPage = lazy(() => import("../pages/paymentPage"));
 const OrderSuccessPage = lazy(() => import("../pages/OrderSuccesPage"));
 
 let routes = createBrowserRouter([
