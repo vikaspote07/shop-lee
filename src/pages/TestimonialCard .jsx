@@ -4,23 +4,20 @@ import { FaQuoteLeft } from "react-icons/fa";
 const testimonials = [
   {
     name: "Alice Johnson",
-    position: "CEO at TechCorp",
-    testimonial:
-      "This product has completely transformed the way our team works. It's intuitive, efficient, and has saved us countless hours.",
+    position: "CEO at quibusdam",
+    testimonial: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia enim reiciendis quas nihil animi totam laudantium et? Nostrum, exercitationem laborum"
     image: "https://randomuser.me/api/portraits/women/1.jpg",
   },
   {
     name: "Bob Smith",
-    position: "Lead Developer at InnovateX",
-    testimonial:
-      "An essential tool for any developer. The features are outstanding and the support team is incredibly responsive.",
+    position: "Lead Developer at esse",
+    testimonial: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia enim reiciendis quas nihil animi totam laudantium et? Nostrum, exercitationem laborum"
     image: "https://randomuser.me/api/portraits/men/1.jpg",
   },
   {
     name: "Claire Adams",
-    position: "Project Manager at WebWorks",
-    testimonial:
-      "I can't imagine managing our projects without this software. It keeps everything organized and on track.",
+    position: "Project Manager at assumenda",
+    testimonial:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia enim reiciendis quas nihil animi totam laudantium et? Nostrum, exercitationem laborum"
     image: "https://randomuser.me/api/portraits/women/2.jpg",
   },
 ];
