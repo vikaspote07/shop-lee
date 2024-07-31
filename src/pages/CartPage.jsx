@@ -63,11 +63,11 @@ function CartPage() {
           <div className="total-summary">
             <h2>Total Amount</h2>
             <h4>Amount: Rs {totalAmount}</h4>
-            <button className="clear-button" onClick={handleClear}>
+            {/* <button className="clear-button" onClick={handleClear}>
               Clear Cart
-            </button>
+            </button> */}
             <Link to="/checkout" className="place-order-link">
-              <button className="place-order-button">Place Order</button>
+              <button className="place-order-button">check out</button>
             </Link>
           </div>
         </div>
