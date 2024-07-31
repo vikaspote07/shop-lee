@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-
-import CategoriesFilter from "./Categories Container/CAtegoriesFilter";
-import PriceFilter from "./Categories Container/PriceFilter";
 import { useSelector, useDispatch } from "react-redux";
-import { setCategories } from "../redux/slices/itemsSlice ";
+import { setCategories } from "../redux/slices/itemsSlice";
+import CategoriesFilter from "./CategoriesContainer/CategoriesFilter";
+import PriceFilter from "./CategoriesContainer/PriceFilter";
 
 function Categories({ onFilter }) {
   const dispatch = useDispatch();
@@ -11,7 +10,7 @@ function Categories({ onFilter }) {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   useEffect(() => {
-    // Populate categories from products
+  
     const uniqueCategories = [
       ...new Set(products.map((item) => item.category)),
     ];
@@ -31,13 +30,13 @@ function Categories({ onFilter }) {
   }, [selectedCategories, onFilter]);
 
   return (
-    <div className="border-solid border-2 border-black-500 p-3.5 mt-10">
+    <div className="fixed top-1/2 left-0 transform -translate-y-1/2 w-64 p-4 border-2 border-black bg-white shadow-lg">
       <h5 className="text-xl font-bold mb-4">Filters</h5>
       <CategoriesFilter
         categories={categories}
         onChange={handleCategoryChange}
       />
-      <PriceFilter />
+      <PriceFilter onFilter={onFilter} />
     </div>
   );
 }

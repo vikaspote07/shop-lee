@@ -1,4 +1,4 @@
-// src/pages/EmptyCartPage.js
+
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const EmptyCartPage = () => {
         It looks like you haven't added any items to your cart yet.
       </p>
       <img
-        src="https://via.placeholder.com/300x200.png?text=Empty+Cart" // Placeholder image, replace with your own
+        src="https://via.placeholder.com/300x200.png?text=Empty+Cart" 
         alt="Empty Cart"
         className="w-1/2 max-w-md mb-8"
       />

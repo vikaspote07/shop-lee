@@ -14,7 +14,7 @@ function SignupPage() {
     let USER_ACC = "USERS";
     let users = JSON.parse(localStorage.getItem(USER_ACC)) || [];
 
-    // Check if username already exists
+    
     const userExists = users.some((user) => user.username === values.username);
 
     if (userExists) {
