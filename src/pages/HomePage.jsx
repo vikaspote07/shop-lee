@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts, fetchCategories } from "../api";
 import { setCategories,setProducts } from "../redux/slices/itemsSlice ";
 import PriceFilter from "../components/Categories Container/PriceFilter";
-import CategoriesFilter from "../components/Categories Container/CategoriesFilter"
+import CategoriesFilter from "../components/Categories Container/CategoriesFilter";
 import ProductGrid from "./ProductGrid";
 import TestimonialPage from "./TestimonialCard ";
-import LoadingSpinner from "../components/loading spinner/LoadingSpinner ";
+
+import LoadingSpinner from "../components/loading spinner/LoadingSpinner "
 import useDebounce from "../hooks/useDebounce";
+import { FaFilter, FaTimes } from "react-icons/fa";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -19,12 +21,12 @@ const HomePage = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedPriceRanges, setSelectedPriceRanges] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const debouncedSelectedCategories = useDebounce(selectedCategories, 500);
   const debouncedSelectedPriceRanges = useDebounce(selectedPriceRanges, 500);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
-  const productsPerPage = 10;
+  const productsPerPage = 8;
 
-  // Fetch products and categories
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -45,7 +47,6 @@ const HomePage = () => {
     loadData();
   }, [dispatch]);
 
-  // Filter products based on selected categories, price ranges, and search term
   useEffect(() => {
     const filterProducts = () => {
       let filtered = products;
@@ -78,7 +79,9 @@ const HomePage = () => {
 
       if (debouncedSearchTerm) {
         filtered = filtered.filter((product) =>
-          product.title?.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+          product.title
+            ?.toLowerCase()
+            .includes(debouncedSearchTerm.toLowerCase())
         );
       }
 
@@ -117,36 +120,65 @@ const HomePage = () => {
   }
 
   return (
-    <>
-      <div className="flex relative">
-        <div className="fixed top-1/2 left-0 transform -translate-y-1/2 w-64 p-4 border-2 border-black bg-white shadow-lg">
-          <CategoriesFilter
-            categories={categories}
-            onChange={handleCategoryFilter}
-          />
-          <PriceFilter onFilter={handlePriceFilter} />
-        </div>
-        <div className="flex-1 p-4 mt-16 ml-72">
-          <div className="flex items-center justify-between mb-4">
-            <h1 className="text-3xl font-bold">Products</h1>
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={handleSearch}
-              className="border p-2 rounded"
+    <div className="bg-gray-100 min-h-screen pt-16">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Mobile filter toggle */}
+          <button
+            className="md:hidden bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center justify-center mb-4"
+            onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
+          >
+            {isMobileFilterOpen ? <FaTimes /> : <FaFilter />}
+            <span className="ml-2">
+              {isMobileFilterOpen ? "Close Filters" : "Open Filters"}
+            </span>
+          </button>
+
+          {/* Filters */}
+          <div
+            className={`md:w-1/4 lg:w-1/5 md:fixed md:left-4 md:top-20 md:bottom-4 md:overflow-y-auto bg-white rounded-lg shadow-md p-6 transition-all duration-300 ease-in-out ${
+              isMobileFilterOpen ? "fixed inset-0 z-50" : "hidden md:block"
+            }`}
+          >
+            <h2 className="text-2xl font-bold mb-6">Filters</h2>
+            <CategoriesFilter
+              categories={categories}
+              onChange={handleCategoryFilter}
+            />
+            <PriceFilter onFilter={handlePriceFilter} />
+            {isMobileFilterOpen && (
+              <button
+                className="md:hidden bg-red-600 text-white px-4 py-2 rounded-lg mt-4"
+                onClick={() => setIsMobileFilterOpen(false)}
+              >
+                Close Filters
+              </button>
+            )}
+          </div>
+
+          {/* Products */}
+          <div className="md:w-3/4 lg:w-4/5 md:ml-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-between mb-8">
+              <h1 className="text-3xl font-bold mb-4 sm:mb-0">Products</h1>
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={handleSearch}
+                className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <ProductGrid
+              filteredProducts={filteredProducts}
+              currentPage={currentPage}
+              productsPerPage={productsPerPage}
+              handlePageChange={handlePageChange}
             />
           </div>
-          <ProductGrid
-            filteredProducts={filteredProducts}
-            currentPage={currentPage}
-            productsPerPage={productsPerPage}
-            handlePageChange={handlePageChange}
-          />
         </div>
       </div>
       <TestimonialPage />
-    </>
+    </div>
   );
 };
 

@@ -5,19 +5,19 @@ const testimonials = [
   {
     name: "Alice Johnson",
     position: "CEO at quibusdam",
-    testimonial: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia enim reiciendis quas nihil animi totam laudantium et? Nostrum, exercitationem laborum"
+    testimonial: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia enim reiciendis quas nihil animi totam laudantium et? Nostrum, exercitationem laborum",
     image: "https://randomuser.me/api/portraits/women/1.jpg",
   },
   {
     name: "Bob Smith",
     position: "Lead Developer at esse",
-    testimonial: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia enim reiciendis quas nihil animi totam laudantium et? Nostrum, exercitationem laborum"
+    testimonial: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia enim reiciendis quas nihil animi totam laudantium et? Nostrum, exercitationem laborum",
     image: "https://randomuser.me/api/portraits/men/1.jpg",
   },
   {
     name: "Claire Adams",
     position: "Project Manager at assumenda",
-    testimonial:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia enim reiciendis quas nihil animi totam laudantium et? Nostrum, exercitationem laborum"
+    testimonial:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia enim reiciendis quas nihil animi totam laudantium et? Nostrum, exercitationem laborum",
     image: "https://randomuser.me/api/portraits/women/2.jpg",
   },
 ];

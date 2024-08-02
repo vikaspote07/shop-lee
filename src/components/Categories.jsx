@@ -10,7 +10,6 @@ function Categories({ onFilter }) {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   useEffect(() => {
-  
     const uniqueCategories = [
       ...new Set(products.map((item) => item.category)),
     ];
@@ -30,13 +29,21 @@ function Categories({ onFilter }) {
   }, [selectedCategories, onFilter]);
 
   return (
-    <div className="fixed top-1/2 left-0 transform -translate-y-1/2 w-64 p-4 border-2 border-black bg-white shadow-lg">
-      <h5 className="text-xl font-bold mb-4">Filters</h5>
-      <CategoriesFilter
-        categories={categories}
-        onChange={handleCategoryChange}
-      />
-      <PriceFilter onFilter={onFilter} />
+    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 className="text-2xl font-bold mb-4">Filters</h2>
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Categories</h3>
+          <CategoriesFilter
+            categories={categories}
+            onChange={handleCategoryChange}
+          />
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Price Range</h3>
+          <PriceFilter onFilter={onFilter} />
+        </div>
+      </div>
     </div>
   );
 }
